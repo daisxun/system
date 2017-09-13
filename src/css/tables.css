@@ -14,18 +14,19 @@
 .cBtn:hover {color: white;background-color: black}
 .cBtn:active {color: white}	/* 选定的链接 */
 .tableStyle{
-    border: 1px solid grey;
     border-collapse: collapse;
     padding: 5px;
     text-align: center;
+    border: 1px solid black;
 }
 
 .tableStyle thead{
-    border: 1px solid black;
     text-align: center;
 }
 .tableStyle thead tr{
-    padding-right:17px;background-color:#999;color:#000;
+    padding-right:17px;
+    background-color:cadetblue;
+    color:black;
 }
 .tableStyle thead tr th,.tableStyle tbody tr td{
     border: 1px solid black;
