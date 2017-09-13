@@ -1,11 +1,195 @@
-<div style="width: 100%;height:100px;background-color: white;" >
+<div style="width: 100%;height:650px;background-color: white">
 
-    <button ui-sref='link2.tab1'  class="btn cBtn">平台用户管理</button>
-    <button ui-sref='link2.tab2'   class="btn cBtn">商家账户管理</button>
-    <button ui-sref='link2.tab3'   class="btn cBtn">系统用户管理</button>
-</div>
-<div  style="width: 100%;height:550px;background-color: yellow" >
+        <ul class="nav nav-tabs" id="myTab" >
+            <li class="active"><a href="#1">支付交易明细</a></li>
+            <li><a href="#2">提现交易明细</a></li>
+            <li><a href="#3">红包交易明细</a></li>
+        </ul>
 
-    <div ui-view>
+        <div class="tab-content">
+            <div class="tab-pane active" id="1">
+                <div class="row" style="height: 80px; padding-top:10px;border-bottom: 3px solid black">
+                    <div style="height: 60px;padding-top: 15px" class="col-md-4">
+                        <span style="font-size: 16px">账号</span>
+                        <input type="text" style="width: 160px">
+                    </div>
+                    <div style="height: 60px;padding-top: 15px;" class="col-md-4">
+                        <span style="font-size: 16px;display: inline-block"> 交易状态:</span>
+                        <select style="height: 30px;width: 180px">
+                            <option value ="volvo">全部</option>
+                            <option value ="saab">成功</option>
+                            <option value="opel">失败</option>
+                        </select>
+                    </div>
+                    <div style="height: 60px;padding-top: 15px" class="col-md-4">
+                        <button class="btn" style="border: 1px solid orangered;background-color: orangered">搜索</button>
+                    </div>
+
+                </div>
+                <div >
+                    <table class="table table-condensed tableStyle"   >
+                        <thead >
+                        <tr >
+                            <th>账户ID</th>
+                            <th>账户名称</th>
+                            <th>账户邮箱</th>
+                            <th>账户类别</th>
+                            <th>账户余额</th>
+                            <th>结算账户</th>
+                            <th>创建时间</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(index,x) in names |filter:search ">
+                            <td>{{ x.id }}</td>
+                            <td>{{ x.name}}</td>
+                            <td>{{ x.email }}</td>
+                            <td>{{ x.acc}}</td>
+                            <td>{{ x.Account}}</td>
+                            <td>{{ x.compute }}</td>
+                            <td>{{ x.time }}</td>
+                            <td>{{ x.status }}</td>
+
+
+
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="tab-pane" id="2">
+                <div class="row" style="height: 80px; padding-top:10px;border-bottom: 3px solid black">
+                    <div style="height: 60px;padding-top: 15px" class="col-md-4">
+                        <span style="font-size: 16px">账号</span>
+                        <input type="text" style="width: 160px">
+                    </div>
+                    <div style="height: 60px;padding-top: 15px;" class="col-md-4">
+                        <span style="font-size: 16px;display: inline-block"> 交易状态:</span>
+                        <select style="height: 30px;width: 180px">
+                            <option value ="volvo">全部</option>
+                            <option value ="saab">成功</option>
+                            <option value="opel">失败</option>
+                        </select>
+                    </div>
+                    <div style="height: 60px;padding-top: 15px" class="col-md-4">
+                        <button class="btn" style="border: 1px solid orangered;background-color: orangered">搜索</button>
+                    </div>
+
+                </div>
+                <table class="table table-condensed tableStyle"   >
+                    <thead >
+                    <tr >
+                        <th>账户</th>
+                        <th>账户</th>
+                        <th>账户</th>
+                        <th>账户</th>
+                        <th>账户</th>
+                        <th>账户</th>
+                        <th>账户</th>
+                        <th>账户</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr >
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="3">
+
+                <table class="table table-condensed tableStyle">
+                    <div class="row" style="height: 80px; padding-top:10px;border-bottom: 3px solid black">
+                        <div style="height: 60px;padding-top: 15px" class="col-md-4">
+                            <span style="font-size: 16px">账号</span>
+                            <input type="text" style="width: 160px">
+                        </div>
+                        <div style="height: 60px;padding-top: 15px;" class="col-md-4">
+                            <span style="font-size: 16px;display: inline-block"> 用户角色:</span>
+                            <select style="height: 30px;width: 180px">
+                                <option value ="volvo">系统管理员</option>
+                                <option value ="saab">结算管理员</option>
+                                <option value="opel">财务管理员</option>
+                            </select>
+                        </div>
+                        <div style="height: 60px;padding-top: 15px" class="col-md-4">
+                            <button class="btn" style="border: 1px solid orangered;background-color: orangered">搜索</button>
+                        </div>
+
+                    </div>
+                    <thead >
+                    <tr >
+                        <th>11账户</th>
+                        <th>11账户</th>
+                        <th>11账户</th>
+                        <th>11账户</th>
+                        <th>11账户</th>
+                        <th>11账户</th>
+                        <th>11账户</th>
+                        <th>11账户</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
+
+
+<script>
+    $(function () {
+        $('#myTab a:first').tab('show');
+    })
+    $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+</script>
+<script>
+    app.controller('timeCtrl', function ($scope) {
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div style="width: 100%;height:100px;background-color: white;" >-->
+
+    <!--<button ui-sref='link2.tab1'  class="btn cBtn">平台用户管理</button>-->
+    <!--<button ui-sref='link2.tab2'   class="btn cBtn">商家账户管理</button>-->
+    <!--<button ui-sref='link2.tab3'   class="btn cBtn">系统用户管理</button>-->
+<!--</div>-->
+<!--<div  style="width: 100%;height:550px;background-color: yellow" >-->
+
+    <!--<div ui-view>-->
+    <!--</div>-->
+<!--</div>-->
