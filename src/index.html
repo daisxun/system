@@ -120,7 +120,7 @@
     <div class=" content row " >
         <div ng-hide="type" ng-class="{true:'leftContent col-xs-2  col-md-2 col-lg-2 col-sm-2',false:'none'}[className]">
             <ul ng-class="{'leftContentLi':true }" ng-hide="type">
-                <li><p>平台账户管理</p></li>
+                <li ui-sref="link2"><p>平台账户管理</p></li>
                 <li><p>交易流水管理</p></li>
                 <li><p>银行流水管理</p></li>
                 <li><p>支付结算管理</p></li>
@@ -167,12 +167,48 @@
     var app=angular.module('myApp',['ui.router','template','infinite-scroll']);
     app.run(function () {});
     app.config(["$stateProvider","$urlRouterProvider", function ($stateProvider,$urlRouterProvider){
-        $stateProvider.state('link1',{
-            url: '/link1',    //访问路径
+    $stateProvider.state('link1',{
+            url: '/link1',    //首页
             templateUrl:'./template/Account/table1.html'
-        });
+        })
+            .state('link2',{
+                url: '/link2',    //平台账户管理
+                templateUrl:'./template/Account/page.html',
+                controller:'link2'
+
+            }
+        );
         $urlRouterProvider.otherwise('link1')
     }]);
+
+    app.controller('link2',['$scope','$http','$state',function ($scope,$http,$state) {
+
+        $scope.names =null;
+        $scope.promise= $http.get("json/page.json");
+        $scope.promise.then(function (result) {
+            $scope.names = result.data.rows;
+        });
+        $scope.fun={
+            "delete":function (index) {
+                $scope.names.splice(index,1)
+            },
+            "write":function (index) {
+
+            }
+        };
+        $scope.go = function(url){ //这里的方法随便命名
+            $state.go(url);
+        }
+        }]);
+
+
+
+
+
+
+
+
+
     app.controller('yue',['$scope',function ($scope) {
         $scope.stop=function(){
 //       鼠标点击后继续显示；
