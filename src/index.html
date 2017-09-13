@@ -38,39 +38,36 @@
 <div>
     <nav class="navbar  navbar-inverse "  aria-labelledby="dLabel" ng-controller="yue">
         <div class="container-fluid">
+            <!--作用：响应式改变头部导航显示-->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a ui-sref="link1">主页</a></li>
-                    <li><a  ui-sref="link2">平台账户管理</a></li>
-                    <li class="dropdown" >
-                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">交易流水管理 <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                    <li><a ui-sref="link2">平台账户管理</a></li>
+                    <li class="dropdown"  ><a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" >交易流水管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-click="stop()">  <!--每个ul中增加一个ng-click="stop"来阻止点击后弹回-->
                             <li><a >交易明细管理</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a >交易异常管理</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            银行流水管理  <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a  >银行流水交易明细</a></li>
+                    <li class="dropdown"><a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">银行流水管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-click="stop()">
+                            <li><a >银行流水交易明细</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a >银行流水异常监控</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            支付结算管理<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a  >商家结算管理</a></li>
+                    <li class="dropdown"><a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">支付结算管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-click="stop()">
+                            <li><a>商家结算管理</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-submenu">
                                 <a tabindex="-1" >往来结算管理</a>
@@ -85,22 +82,17 @@
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-submenu">
                                 <a tabindex="-1" >数据风控管理</a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" ng-click="stop()">
                                     <li><a tabindex="-1" >用户行为监控</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a tabindex="-1" >授权审批</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a tabindex="-1" >数据遗失监控</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a tabindex="-1" >二级菜单</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            系统维护管理 <span class="caret"></span>
-                        </a>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">系统维护管理 <span class="caret"></span></a>
                         <ul class="dropdown-menu" ng-click="stop()">
                             <li><a >用户管理</a></li>
                             <li role="separator" class="divider"></li>
@@ -128,16 +120,14 @@
     <div class=" content row " >
         <div ng-hide="type" ng-class="{true:'leftContent col-xs-2  col-md-2 col-lg-2 col-sm-2',false:'none'}[className]">
             <ul ng-class="{'leftContentLi':true }" ng-hide="type">
-                <li ui-sref="yuLiu11"   ><p>平台账户管理</p></li>
+                <li><p>平台账户管理</p></li>
                 <li><p>交易流水管理</p></li>
                 <li><p>银行流水管理</p></li>
                 <li><p>支付结算管理</p></li>
                 <li><p>支付方式管理</p></li>
                 <li><p>系统维护管理</p></li>
             </ul>
-            <button type="button" ng-class="{true:'btn',false:'none'}[className]"   ng-click="hide()" >
-                隐藏
-            </button>
+            <button type="button" ng-class="{true:'btn',false:'none'}[className]"   ng-click="hide()" >隐藏</button>
         </div>
         <div  ng-class="{true:'rightContent col-xs-10 col-md-10 col-lg-10 col-sm-10',false:'leftContent col-xs-12  col-md-12 col-lg-12 col-sm-12'}[className]" >
             <div ui-view></div>
@@ -179,33 +169,8 @@
     app.config(["$stateProvider","$urlRouterProvider", function ($stateProvider,$urlRouterProvider){
         $stateProvider.state('link1',{
             url: '/link1',    //访问路径
-            templateUrl:'./template/table1.html'
-        })
-            .state('link2',{
-                url:'/link2',
-                templateUrl:'./template/Account/page.html',
-                controller:'link2'
-            })
-            .state('link2.tab1',{
-                url:'/tab1',
-                templateUrl:'./template/Account/tab1.html',
-                controller:'tab1'
-
-            })
-            .state('link2.tab2',{
-                url:'/tab2',
-                templateUrl:'./template/Account/tab2.html',
-                controller:'tab2'
-
-            })
-            .state('link2.tab3',{
-                url:'/tab3',
-                templateUrl:'./template/Account/tab3.html',
-                controller:'tab3'
-
-            })
-
-
+            templateUrl:'./template/Account/table1.html'
+        });
         $urlRouterProvider.otherwise('link1')
     }]);
     app.controller('yue',['$scope',function ($scope) {
@@ -214,101 +179,102 @@
             event.stopPropagation();
         };
     }]);
-    app.controller('link2',['$scope','$http',function ($scope,$http) {
-
-        $scope.names =null;
-        $scope.promise= $http.get("student.json");
-        $scope.promise.then(function (result) {
-            $scope.names = result.data.rows;
-//                console.log( result.data.rows);
-        });
-        $scope.fun={
-            "delete":function (index) {
-                $scope.names.splice(index,1)
-            },
-            "write":function (index) {
-
-            }
-        }
-    }]);
-    app.controller('tab1',['$scope','$http',function ($scope,$http) {
-        $scope.protoData =[];
-        $scope.promise= $http.get("student.json");
-        $scope.promise.then(function (result) {
-            $scope.protoData = result.data.rows;
-            $scope.names=$scope.protoData;
-//            console.log($scope.names[0].status);
-        });
-
-        $scope.slect = ["正常","冻结" ,"注销"];
-        $scope.fun={
-            unwatch: $scope.$watch('NameId',function (newV, oldV) {
-                $scope.newData=newV;
-                $scope.oldData=oldV;
-            },true),
-            query:function (data) {
-                $scope.names=[];
-                for(var i=0,j=$scope.protoData.length;i<j;i++){
-                    if($scope.protoData[i].status==data){
-                        $scope.names.push($scope.protoData[i])
-                    }
-                }
-
-            }
-        };
-
-    }]);
-    app.controller('tab2',['$scope','$http',function ($scope,$http) {
-        $scope.protoData =[];
-        $scope.promise= $http.get("1231.json");
-        $scope.promise.then(function (result) {
-            $scope.protoData = result.data.rows;
-            $scope.names=$scope.protoData;
-//            console.log($scope.names[0].status);
-        });
-
-        $scope.slect = ["正常","冻结" ,"注销"];
-        $scope.fun={
-            unwatch: $scope.$watch('NameId',function (newV, oldV) {
-                $scope.newData=newV;
-                $scope.oldData=oldV;
-            },true),
-            query:function (data) {
-                $scope.names=[];
-                for(var i=0,j=$scope.protoData.length;i<j;i++){
-                    if($scope.protoData[i].status==data){
-                        $scope.names.push($scope.protoData[i])
-                    }
-                }
-
-            }
-        };
-
-    }]);
-    app.controller('tab3',['$scope','$http',function ($scope,$http) {
-
-        $scope.names =null;
-        $scope.promise= $http.get("student.json");
-        $scope.promise.then(function (result) {
-            $scope.names = result.data.rows;
-        });
-        $scope.fun={
-            "delete":function (index) {
-                $scope.names.splice(index,1)
-            },
-            "write":function (index) {
-                alert('1')
-            },
-            'add':function () {
-                alert('1')
-            }
-        }
-    }]);
+//    app.controller('link2',['$scope','$http',function ($scope,$http) {
+//
+//        $scope.names =null;
+//        $scope.promise= $http.get("student.json");
+//        $scope.promise.then(function (result) {
+//            $scope.names = result.data.rows;
+////                console.log( result.data.rows);
+//        });
+//        $scope.fun={
+//            "delete":function (index) {
+//                $scope.names.splice(index,1)
+//            },
+//            "write":function (index) {
+//
+//            }
+//        }
+//    }]);
+//    app.controller('tab1',['$scope','$http',function ($scope,$http) {
+//        $scope.protoData =[];
+//        $scope.promise= $http.get("student.json");
+//        $scope.promise.then(function (result) {
+//            $scope.protoData = result.data.rows;
+//            $scope.names=$scope.protoData;
+////            console.log($scope.names[0].status);
+//        });
+//
+//        $scope.slect = ["正常","冻结" ,"注销"];
+//        $scope.fun={
+//            unwatch: $scope.$watch('NameId',function (newV, oldV) {
+//                $scope.newData=newV;
+//                $scope.oldData=oldV;
+//            },true),
+//            query:function (data) {
+//                $scope.names=[];
+//                for(var i=0,j=$scope.protoData.length;i<j;i++){
+//                    if($scope.protoData[i].status==data){
+//                        $scope.names.push($scope.protoData[i])
+//                    }
+//                }
+//
+//            }
+//        };
+//
+//    }]);
+//    app.controller('tab2',['$scope','$http',function ($scope,$http) {
+//        $scope.protoData =[];
+//        $scope.promise= $http.get("1231.json");
+//        $scope.promise.then(function (result) {
+//            $scope.protoData = result.data.rows;
+//            $scope.names=$scope.protoData;
+////            console.log($scope.names[0].status);
+//        });
+//
+//        $scope.slect = ["正常","冻结" ,"注销"];
+//        $scope.fun={
+//            unwatch: $scope.$watch('NameId',function (newV, oldV) {
+//                $scope.newData=newV;
+//                $scope.oldData=oldV;
+//            },true),
+//            query:function (data) {
+//                $scope.names=[];
+//                for(var i=0,j=$scope.protoData.length;i<j;i++){
+//                    if($scope.protoData[i].status==data){
+//                        $scope.names.push($scope.protoData[i])
+//                    }
+//                }
+//
+//            }
+//        };
+//
+//    }]);
+//    app.controller('tab3',['$scope','$http',function ($scope,$http) {
+//
+//        $scope.names =null;
+//        $scope.promise= $http.get("student.json");
+//        $scope.promise.then(function (result) {
+//            $scope.names = result.data.rows;
+//        });
+//        $scope.fun={
+//            "delete":function (index) {
+//                $scope.names.splice(index,1)
+//            },
+//            "write":function (index) {
+//                alert('1')
+//            },
+//            'add':function () {
+//                alert('1')
+//            }
+//        }
+//    }]);
 
 
 
 
     app.controller('contView',['$scope',function ($scope) {
+        //控制ui-view和表格的显示是否全屏
         $scope.className=true;
         $scope.hide=function () {
             $scope.className=false
