@@ -1,10 +1,324 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta charset="UTF-8">
+    <title> </title>
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-ui-router.js"></script>
+    <script src="js/lib/dropdown.js"></script>
+    <script src="js/lib/moment-with-locales.js"></script>
+    <script src="js/lib/bootstrap-datepicker.min.js"></script>
+    <script src="js/lib/moment.js"></script>
+    <script src="js/lib/ng-infinite-scroll.js"></script>
+    <script src="js/lib/angular-locale_zh-cn.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/3menu.css">
+    <link rel="stylesheet" href="css/tablecss.css">
+    <link rel="stylesheet" href="css/tables.css">
 </head>
 <body>
+<!--头部区域-->
+<div class="container tab navbar ">
+    <div class="tabBox1">
+        <span class="tabSpan"></span>
+        <p class="tab-pane">正品汇支付结算管理系统</p>
+    </div>
+    <div class="tabBox2">
+
+    </div>
+</div>
+<!--导航区域-->
+<div>
+    <nav class="navbar  navbar-inverse "  aria-labelledby="dLabel" ng-controller="yue">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a ui-sref="link1">主页</a></li>
+                    <li><a  ui-sref="link2">平台账户管理</a></li>
+                    <li class="dropdown" >
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">交易流水管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a >交易明细管理</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >交易异常管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            银行流水管理  <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a  >银行流水交易明细</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >银行流水异常监控</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            支付结算管理<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a  >商家结算管理</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" >往来结算管理</a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1">账单明细</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a tabindex="-1">实时交易监控</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a tabindex="-1">实时余额监控</a></li>
+                                </ul>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" >数据风控管理</a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" >用户行为监控</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a tabindex="-1" >授权审批</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a tabindex="-1" >数据遗失监控</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a tabindex="-1" >二级菜单</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            系统维护管理 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" ng-click="stop()">
+                            <li><a >用户管理</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >菜单管理</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >角色管理</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >风控参数设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >支付方式管理</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a >权限编辑</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a >关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--内容区域-->
+<div class="" ng-controller="contView" >
+    <div class=" content row " >
+        <div ng-hide="type" ng-class="{true:'leftContent col-xs-2  col-md-2 col-lg-2 col-sm-2',false:'none'}[className]">
+            <ul ng-class="{'leftContentLi':true }" ng-hide="type">
+                <li ui-sref="yuLiu11"   ><p>平台账户管理</p></li>
+                <li><p>交易流水管理</p></li>
+                <li><p>银行流水管理</p></li>
+                <li><p>支付结算管理</p></li>
+                <li><p>支付方式管理</p></li>
+                <li><p>系统维护管理</p></li>
+            </ul>
+            <button type="button" ng-class="{true:'btn',false:'none'}[className]"   ng-click="hide()" >
+                隐藏
+            </button>
+        </div>
+        <div  ng-class="{true:'rightContent col-xs-10 col-md-10 col-lg-10 col-sm-10',false:'leftContent col-xs-12  col-md-12 col-lg-12 col-sm-12'}[className]" >
+            <div ui-view></div>
+        </div>
+    </div>
+    <div class="tabShow" style="position: fixed;top:450px ">
+        <button type="button" ng-class="{true:'none',false:'btn'}[className]" style="float: left" ng-click="show()">打开</button>
+    </div>
+</div>
+<!--尾部区域-->
+<div class="container footer">
+    <p class="footerP">深圳前海越港资产管理有限公司版权所有 © 2002-2017 沪ICP备07032180号</p>
+</div>
+<!--消息区域-->
+<div class="message">
+    <span></span>
+    <p>您有两条信息待查看</p>
+</div>
 
 </body>
+<script>
+    angular.module("template",[])
+        .run(["$templateCache", function ($templateCache) {
+            $templateCache.put("myTabs.html","<div class='table'>" +
+                "<ul class='nav nav-tabs'>" +
+                "<li ng-repeat='pane in scopes' ng-class='{active:pane.selected}'>" +
+                "<a href='#' ng-click='select(pane)'>{{pane.tittle}}<a/>" +
+                "</li>" +
+                "</ul>" +
+                "<div ng-transclude class='tab-content'></div>" +
+                "</div>")
+        }])
+        .run(["$templateCache", function ($templateCache) {
+            $templateCache.put("myPane.html","<div class='table-pane' ng-show='selected' ng-transclude>" +
+                "</div>")
+        }]);
+    var app=angular.module('myApp',['ui.router','template','infinite-scroll']);
+    app.run(function () {});
+    app.config(["$stateProvider","$urlRouterProvider", function ($stateProvider,$urlRouterProvider){
+        $stateProvider.state('link1',{
+            url: '/link1',    //访问路径
+            templateUrl:'./template/table1.html'
+        })
+            .state('link2',{
+                url:'/link2',
+                templateUrl:'./template/Account/page.html',
+                controller:'link2'
+            })
+            .state('link2.tab1',{
+                url:'/tab1',
+                templateUrl:'./template/Account/tab1.html',
+                controller:'tab1'
+
+            })
+            .state('link2.tab2',{
+                url:'/tab2',
+                templateUrl:'./template/Account/tab2.html',
+                controller:'tab2'
+
+            })
+            .state('link2.tab3',{
+                url:'/tab3',
+                templateUrl:'./template/Account/tab3.html',
+                controller:'tab3'
+
+            })
+
+
+        $urlRouterProvider.otherwise('link1')
+    }]);
+    app.controller('yue',['$scope',function ($scope) {
+        $scope.stop=function(){
+//       鼠标点击后继续显示；
+            event.stopPropagation();
+        };
+    }]);
+    app.controller('link2',['$scope','$http',function ($scope,$http) {
+
+        $scope.names =null;
+        $scope.promise= $http.get("student.json");
+        $scope.promise.then(function (result) {
+            $scope.names = result.data.rows;
+//                console.log( result.data.rows);
+        });
+        $scope.fun={
+            "delete":function (index) {
+                $scope.names.splice(index,1)
+            },
+            "write":function (index) {
+
+            }
+        }
+    }]);
+    app.controller('tab1',['$scope','$http',function ($scope,$http) {
+        $scope.protoData =[];
+        $scope.promise= $http.get("student.json");
+        $scope.promise.then(function (result) {
+            $scope.protoData = result.data.rows;
+            $scope.names=$scope.protoData;
+//            console.log($scope.names[0].status);
+        });
+
+        $scope.slect = ["正常","冻结" ,"注销"];
+        $scope.fun={
+            unwatch: $scope.$watch('NameId',function (newV, oldV) {
+                $scope.newData=newV;
+                $scope.oldData=oldV;
+            },true),
+            query:function (data) {
+                $scope.names=[];
+                for(var i=0,j=$scope.protoData.length;i<j;i++){
+                    if($scope.protoData[i].status==data){
+                        $scope.names.push($scope.protoData[i])
+                    }
+                }
+
+            }
+        };
+
+    }]);
+    app.controller('tab2',['$scope','$http',function ($scope,$http) {
+        $scope.protoData =[];
+        $scope.promise= $http.get("1231.json");
+        $scope.promise.then(function (result) {
+            $scope.protoData = result.data.rows;
+            $scope.names=$scope.protoData;
+//            console.log($scope.names[0].status);
+        });
+
+        $scope.slect = ["正常","冻结" ,"注销"];
+        $scope.fun={
+            unwatch: $scope.$watch('NameId',function (newV, oldV) {
+                $scope.newData=newV;
+                $scope.oldData=oldV;
+            },true),
+            query:function (data) {
+                $scope.names=[];
+                for(var i=0,j=$scope.protoData.length;i<j;i++){
+                    if($scope.protoData[i].status==data){
+                        $scope.names.push($scope.protoData[i])
+                    }
+                }
+
+            }
+        };
+
+    }]);
+    app.controller('tab3',['$scope','$http',function ($scope,$http) {
+
+        $scope.names =null;
+        $scope.promise= $http.get("student.json");
+        $scope.promise.then(function (result) {
+            $scope.names = result.data.rows;
+        });
+        $scope.fun={
+            "delete":function (index) {
+                $scope.names.splice(index,1)
+            },
+            "write":function (index) {
+                alert('1')
+            },
+            'add':function () {
+                alert('1')
+            }
+        }
+    }]);
+
+
+
+
+    app.controller('contView',['$scope',function ($scope) {
+        $scope.className=true;
+        $scope.hide=function () {
+            $scope.className=false
+        }
+        $scope.show=function () {
+            $scope.className=true
+        }
+
+
+
+    }]);
+</script>
 </html>
