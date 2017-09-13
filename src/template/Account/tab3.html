@@ -1,0 +1,92 @@
+
+    <div style="width: 100%;height:550px;background-color: gainsboro">
+        <div  class="row">
+            <div class="col-md-4">
+                <span>账户名称</span>
+                <input name="" type="text" placeholder="请输入账户名称"   ng-model=search.name  />
+
+            </div>
+            <div class="col-md-4">
+                <div class="form" style="display: inline-block">
+                    <span>账户状态</span>
+                    <select ng-init="selectedName = slect[0]" ng-model="selectedName" ng-options="x for x in slect">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button ng-click="fun.query(selectedName)"  class="btn  cBtn" >搜索</button>
+                <button type="button" onclick="method('tableExcel')" class="btn  cBtn">导出</button>
+                <button ng-click="fun.add()" class="btn cBtn">增加</button>
+                <button ng-click="fun.delete(index)" class="btn cBtn">删除</button>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <!--========================================================-->
+            <!--<button type="button" class="btn cBtn" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</button>-->
+            <div  class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gridSystemModalLabel">用户信息</h4>
+                        </div>
+                        <div class="modal-body container">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!--=============================================================-->
+            <table class="table table-condensed tableStyle" id="tableExcel" >
+                <caption></caption>
+
+                <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(index,x) in names">
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.status }}</td>
+                    <td>{{ x.email }}</td>
+                    <td>{{ x.time }}</td>
+                    <td>{{ x.acc}}</td>
+                    <td>{{ x.Account}}</td>
+                    <td>
+                        <button type="button" class="btn cBtn" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</button>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    <script>
+        //    $('#exampleModal').on('show.bs.modal', function (event) {
+        //        var button = $(event.relatedTarget);
+        //        var recipient = button.data('whatever');
+        //        var modal = $(this);
+        //        modal.find('.modal-title').text('New message to ' + recipient);
+        //        modal.find('.modal-body input').val(recipient)
+        //    })
+    </script>
+</div>

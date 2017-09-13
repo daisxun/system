@@ -1,0 +1,86 @@
+<div style="border: 1px solid black;height: 650px;width: 100%">
+    <div style="width:100%; height: 60px;background-color: greenyellow;border: 1px solid black">
+        <div style="height:60px;width: 100%" class="row container">
+            <div style="height: 60px;padding-top: 15px" class="col-md-2">
+                <span style="font-size: 16px">账号</span>
+                <input type="text" style="width: 160px">
+            </div>
+            <div style="height: 60px;padding-top: 15px" class="col-md-6" >
+                <div >
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span style="font-size:16px;display: inline-block;margin-top: 10px">交易时间</span>
+                        </div>
+                        <div class="col-md-5">
+                            <p class="input-group">
+                                <input  class="form-control " show-button-bar="false"
+                                        uib-datepicker-popup="{{format}}" ng-model="dt1" is-open="popup1.opened"/>
+                                <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="open1()">选择</button></span>
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <p class="input-group">
+                                <input  class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="popup2.opened"/>
+                                <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="open2()">选择</button></span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 60px;padding-top: 15px;" class="col-md-3">
+                <span style="font-size: 16px;display: inline-block"> 交易状态:</span>
+                <select style="height: 30px;width: 180px">
+                    <option value ="volvo">全部</option>
+                    <option value ="saab">成功</option>
+                    <option value="opel">失败</option>
+                </select>
+            </div>
+            <div style="height: 60px;padding-top: 15px" class="col-md-1">
+                <button class="btn" style="border: 1px solid orangered;background-color: orangered">搜索</button>
+            </div>
+        </div>
+    </div>
+    <div style="width:100%; height: 590px;background-color: aliceblue;border: 1px solid black">
+            <table class="table table-condensed tableStyle"   >
+                <thead >
+                <tr >
+                    <th>账号</th>
+                    <th>交易账号</th>
+                    <th>交易时间</th>
+                    <th>业务订单号</th>
+                    <th>业务类型</th>
+                    <th>交易方</th>
+                    <th>异常原因</th>
+                    <th>交易金额</th>
+                    <th>币种</th>
+                    <th>状态</th>
+                    <th>交易数据源</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(index,x) in names |filter:search ">
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.name}}</td>
+                    <td>{{ x.email }}</td>
+                    <td>{{ x.acc}}</td>
+                    <td>{{ x.Account}}</td>
+                    <td>{{ x.compute }}</td>
+                    <td>{{ x.time }}</td>
+                    <td>{{ x.status }}</td>
+                    <td>{{ x.status }}</td>
+                    <td>{{ x.status }}</td>
+                    <td>{{ x.status }}</td>
+                    <td>{{ x.status }}</td>
+                    <td><button>操作</button></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+    </div>
+</div>
+
+
