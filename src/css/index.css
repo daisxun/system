@@ -221,3 +221,13 @@ input, select {
     padding:30px;
     box-sizing: border-box;
 }
+
+
+/*提示消息的样式*/
+.message{
+    position: fixed;
+    right: 0;
+    bottom: 50px;
+    border: 1px solid black;
+    color: white;
+}

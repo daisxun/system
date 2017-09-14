@@ -143,7 +143,7 @@
 <!--消息区域-->
 <div class="message">
     <span></span>
-    <p>您有两条信息待查看</p>
+    <p>您有 <span>2</span>信息待查看</p>
 </div>
 
 </body>
@@ -201,7 +201,7 @@
 
             })
             .state('link7',{
-                url: '/link7',    //支付方式管理
+                url: '/link7',    //系统维护管理
                 templateUrl:'./template/system/menu.html',
                 controller:'link7'
 
@@ -219,6 +219,7 @@
         $scope.promise= $http.get("json/page.json");
         $scope.promise.then(function (result) {
             $scope.names = result.data.rows;
+            console.log($scope.names);
         });
         $scope.fun={
             "delete":function (index) {
@@ -262,100 +263,6 @@
             event.stopPropagation();
         };
     }]);
-//    app.controller('link2',['$scope','$http',function ($scope,$http) {
-//
-//        $scope.names =null;
-//        $scope.promise= $http.get("student.json");
-//        $scope.promise.then(function (result) {
-//            $scope.names = result.data.rows;
-////                console.log( result.data.rows);
-//        });
-//        $scope.fun={
-//            "delete":function (index) {
-//                $scope.names.splice(index,1)
-//            },
-//            "write":function (index) {
-//
-//            }
-//        }
-//    }]);
-//    app.controller('tab1',['$scope','$http',function ($scope,$http) {
-//        $scope.protoData =[];
-//        $scope.promise= $http.get("student.json");
-//        $scope.promise.then(function (result) {
-//            $scope.protoData = result.data.rows;
-//            $scope.names=$scope.protoData;
-////            console.log($scope.names[0].status);
-//        });
-//
-//        $scope.slect = ["正常","冻结" ,"注销"];
-//        $scope.fun={
-//            unwatch: $scope.$watch('NameId',function (newV, oldV) {
-//                $scope.newData=newV;
-//                $scope.oldData=oldV;
-//            },true),
-//            query:function (data) {
-//                $scope.names=[];
-//                for(var i=0,j=$scope.protoData.length;i<j;i++){
-//                    if($scope.protoData[i].status==data){
-//                        $scope.names.push($scope.protoData[i])
-//                    }
-//                }
-//
-//            }
-//        };
-//
-//    }]);
-//    app.controller('tab2',['$scope','$http',function ($scope,$http) {
-//        $scope.protoData =[];
-//        $scope.promise= $http.get("1231.json");
-//        $scope.promise.then(function (result) {
-//            $scope.protoData = result.data.rows;
-//            $scope.names=$scope.protoData;
-////            console.log($scope.names[0].status);
-//        });
-//
-//        $scope.slect = ["正常","冻结" ,"注销"];
-//        $scope.fun={
-//            unwatch: $scope.$watch('NameId',function (newV, oldV) {
-//                $scope.newData=newV;
-//                $scope.oldData=oldV;
-//            },true),
-//            query:function (data) {
-//                $scope.names=[];
-//                for(var i=0,j=$scope.protoData.length;i<j;i++){
-//                    if($scope.protoData[i].status==data){
-//                        $scope.names.push($scope.protoData[i])
-//                    }
-//                }
-//
-//            }
-//        };
-//
-//    }]);
-//    app.controller('tab3',['$scope','$http',function ($scope,$http) {
-//
-//        $scope.names =null;
-//        $scope.promise= $http.get("student.json");
-//        $scope.promise.then(function (result) {
-//            $scope.names = result.data.rows;
-//        });
-//        $scope.fun={
-//            "delete":function (index) {
-//                $scope.names.splice(index,1)
-//            },
-//            "write":function (index) {
-//                alert('1')
-//            },
-//            'add':function () {
-//                alert('1')
-//            }
-//        }
-//    }]);
-
-
-
-
     app.controller('contView',['$scope',function ($scope) {
         //控制ui-view和表格的显示是否全屏
         $scope.className=true;
