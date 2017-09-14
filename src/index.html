@@ -123,8 +123,8 @@
                 <li ui-sref="link3"><p>交易流水管理</p></li>
                 <li ui-sref="link4"><p>银行流水管理</p></li>
                 <li ui-sref="link5"><p>支付结算管理</p></li>
-                <li><p>支付方式管理</p></li>
-                <li><p>系统维护管理</p></li>
+                <li ui-sref="link6"><p>支付方式管理</p></li>
+                <li ui-sref="link7"><p>系统维护管理</p></li>
             </ul>
             <button type="button" ng-class="{true:'btn',false:'none'}[className]"   ng-click="hide()" >隐藏</button>
         </div>
@@ -193,6 +193,18 @@
                 templateUrl:'./template/pay/business.html',
                 controller:'link5'
 
+            })
+            .state('link6',{
+                url: '/link6',    //支付方式管理
+                templateUrl:'./template/pay/busMode.html',
+                controller:'link6'
+
+            })
+            .state('link7',{
+                url: '/link7',    //支付方式管理
+                templateUrl:'./template/system/menu.html',
+                controller:'link7'
+
             });
 
 
@@ -227,6 +239,12 @@
 
     }]);
     app.controller('link5',['$scope','$http',function ($scope,$http) {
+
+    }]);
+    app.controller('link6',['$scope','$http',function ($scope,$http) {
+
+    }]);
+    app.controller('link7',['$scope','$http',function ($scope,$http) {
 
     }]);
 
