@@ -120,9 +120,9 @@
         <div ng-hide="type" ng-class="{true:'leftContent col-xs-2  col-md-2 col-lg-2 col-sm-2',false:'none'}[className]">
             <ul ng-class="{'leftContentLi':true }" ng-hide="type">
                 <li ui-sref="link2"><p>平台账户管理</p></li>
-                <li><p>交易流水管理</p></li>
-                <li><p>银行流水管理</p></li>
-                <li><p>支付结算管理</p></li>
+                <li ui-sref="link3"><p>交易流水管理</p></li>
+                <li ui-sref="link4"><p>银行流水管理</p></li>
+                <li ui-sref="link5"><p>支付结算管理</p></li>
                 <li><p>支付方式管理</p></li>
                 <li><p>系统维护管理</p></li>
             </ul>
@@ -175,8 +175,29 @@
                 templateUrl:'./template/Account/page.html',
                 controller:'link2'
 
-            }
-        );
+            })
+            .state('link3',{
+                    url: '/link3',    //交易流水管理
+                    templateUrl:'./template/deal/goodsDeal.html',
+                    controller:'link3'
+
+                })
+            .state('link4',{
+                url: '/link4',    //银行流水管理
+                templateUrl:'./template/bank/bank_minute.html',
+                controller:'link4'
+
+            })
+            .state('link5',{
+                url: '/link5',    //支付结算管理
+                templateUrl:'./template/pay/business.html',
+                controller:'link5'
+
+            });
+
+
+
+
         $urlRouterProvider.otherwise('link1')
     }]);
 
@@ -199,6 +220,15 @@
             $state.go(url);
         }
         }]);
+    app.controller('link3',['$scope','$http',function ($scope,$http) {
+        
+    }]);
+    app.controller('link4',['$scope','$http',function ($scope,$http) {
+
+    }]);
+    app.controller('link5',['$scope','$http',function ($scope,$http) {
+
+    }]);
 
 
 
